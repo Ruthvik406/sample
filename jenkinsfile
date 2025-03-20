@@ -4,7 +4,7 @@ pipeline {
     environment {
         // Reference the DockerHub credentials
         DOCKERHUB_CREDS = credentials('dockerhub-creds') // DockerHub username/password stored in Jenkins
-        DOCKER_IMAGE = 'your-dockerhub-username/node-app' // The name of your Docker image
+        DOCKER_IMAGE = 'ruthvikbandi/node-app' // The name of your Docker image
         EC2_IP = '13.233.107.237' // Replace with your EC2 instance IP
     }
 
