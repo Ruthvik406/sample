@@ -5,14 +5,14 @@ pipeline {
         // Reference the DockerHub credentials
         DOCKERHUB_CREDS = credentials('dockerhub-creds') // DockerHub username/password stored in Jenkins
         DOCKER_IMAGE = 'your-dockerhub-username/node-app' // The name of your Docker image
-        EC2_IP = 'your-ec2-ip' // Replace with your EC2 instance IP
+        EC2_IP = '13.233.107.237' // Replace with your EC2 instance IP
     }
 
     stages {
         stage('Checkout') {
             steps {
                 // Clone the repository from GitHub
-                git branch: 'main', url: 'https://github.com/your-username/your-repo.git'
+                git branch: 'main', url: 'https://github.com/Ruthvik406/sample.git'
             }
         }
 
@@ -41,7 +41,7 @@ pipeline {
                 // SSH into the EC2 instance and deploy the Docker image
                 sshagent(['ec2-ssh-key']) {  // Use the SSH key credentials for accessing EC2
                     sh """
-                        ssh -o StrictHostKeyChecking=no ubuntu@${EC2_IP} "
+                        ssh -o StrictHostKeyChecking=no ubuntu@${3.110.27.182} "
                             docker pull ${DOCKER_IMAGE}:${BUILD_NUMBER}   // Pull the latest image from Docker Hub
                             docker stop node-app || true                 // Stop the existing container (if any)
                             docker rm node-app || true                   // Remove the stopped container
